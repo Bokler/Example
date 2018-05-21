@@ -1,0 +1,22 @@
+.main_info {
+	display: block;
+	width: 100%;
+	padding: 15px 30px;
+	color: #fff;
+	text-align: center;
+	&_block {
+		width: 100%;
+	}
+	&.primary {
+		background-color: #86a9ee;
+	}
+	&.success {
+		background-color: #86eec3;
+	}
+	&.warning {
+		background-color: #eed386;
+	}
+	&.danger {
+		background-color: #ee8686;
+	}
+}

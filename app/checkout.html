@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1">
+	<title>Главная</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<!--[if lt IE 9]>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+	<header class="header_block">
+	<div class="header_block__top_line">
+		<div class="header_block__top_line_container container">
+			<nav class="top_menu">
+	<ul class="top_menu__list">
+		<li class="top_menu__item">
+			<a href="#" class="top_menu__link">O nas</a>
+		</li>
+		<li class="top_menu__item">
+			<a href="#" class="top_menu__link">Polityka prywatności</a>
+		</li>
+		<li class="top_menu__item">
+			<a href="#" class="top_menu__link">Dostawa i Płatności</a>
+		</li>
+		<li class="top_menu__item">
+			<a href="#" class="top_menu__link">Polityka</a>
+		</li>
+		<li class="top_menu__item">
+			<a href="#" class="top_menu__link">Gwarancja i zwrot towaru</a>
+		</li>
+		<li class="top_menu__item">
+			<a href="#" class="top_menu__link">Usługi</a>
+		</li>
+		<li class="top_menu__item">
+			<a href="#" class="top_menu__link">Leasing</a>
+		</li>
+		<li class="top_menu__item">
+			<a href="#" class="top_menu__link">Hurtownia kosmetyczna</a>
+		</li>
+	</ul>
+</nav>
+			<div class="login_block">
+	<a href="#" class="login_block__link">Logowanie</a>
+</div>
+		</div>
+	</div>
+	<div class="header_block__main">
+		<div class="header_block__main_container container">
+			<a href="/" class="header_logo_block">
+				<img src="img/header-logo.svg" alt="">
+			</a>
+			<form class="main_search_form loader js_search_form" action="#">
+	<input class="main_search_form__input" type="text" placeholder="Wyszukaj produkt w naszym sklepie" onchange="searchWord(this);">
+	<input class="main_search_form__submit" type="submit" value="">
+	<div class="main_search_form__wrapper">
+		<div class="main_search_form__list">
+			<div class="main_search_form__item">
+	<div class="main_search_form__img">
+		<img src="img/search-product-img.png" alt="">
+	</div>
+	<a href="#" class="main_search_form__link">Aparat do mikrodermabrazji w domu z frezem obrotowym Diamond Peel 15</a>
+	<div class="main_search_form__column">
+		<div class="main_search_form__status">Dostępny</div>
+		<div class="main_search_form__price">318,00 zł</div>
+	</div>
+</div>
+			<div class="main_search_form__item">
+	<div class="main_search_form__img">
+		<img src="img/search-product-img.png" alt="">
+	</div>
+	<a href="#" class="main_search_form__link">Aparat do mikrodermabrazji w domu z frezem obrotowym Diamond Peel 15</a>
+	<div class="main_search_form__column">
+		<div class="main_search_form__status">Dostępny</div>
+		<div class="main_search_form__price">318,00 zł</div>
+	</div>
+</div>
+			<div class="main_search_form__item">
+	<div class="main_search_form__img">
+		<img src="img/search-product-img.png" alt="">
+	</div>
+	<a href="#" class="main_search_form__link">Aparat do mikrodermabrazji w domu z frezem obrotowym Diamond Peel 15</a>
+	<div class="main_search_form__column">
+		<div class="main_search_form__status">Dostępny</div>
+		<div class="main_search_form__price">318,00 zł</div>
+	</div>
+</div>
+			<a href="#" class="main_search_form__all_results">Показать все результаты</a>
+		</div>
+	</div>
+</form>
+			<a href="tel:221021945" class="header_phone">22 102 19 45</a>
+			<div class="dostawa">Dostawa na terenie całej UE</div>
+<a href="#" class="header_contacts_link">Showroom w Warszawie</a>
+			<!-- empty cart begin -->
+<a href="#" class="empty_cart_link hidden">Koszyk</a>
+<!-- empty cart end -->
+<!-- full cart begin -->
+<div class="cart">
+	<a href="#" class="cart__link js_cart__link">
+		<span class="cart__title">Wartość:</span>
+		<span class="cart__price">2 989,00 zł</span>
+	</a>
+	<a href="#" class="cart__buy_link">Złóż zamówienie</a>
+</div>
+<!-- full cart end -->
+		</div>
+	</div>
+</header>
+<div class="pop_up js_pop_up">
+	<div class="close_pop_up js_close_pop_up"></div>
+	<div class="pop_up__wrapper js_pop_up__wrapper"></div>
+</div>
+<div class="pop_bg js_pop_bg"></div>
+<script>
+		function sendSearch() {
+				var input = $('#idsearchkeywords').val();
+				var inputE = $('#idsearchkeywords');
+				if (input != '') {
+						searchWord(inputE,true);
+				}
+				return false;
+		}
+
+		function searchWord(_this,flag) {
+				var form = $(_this).closest('form');
+				var action = form.attr('data-action');
+				if(!flag){
+						document.onkeyup = function (e) {
+								e = e || window.event;
+								if (e.keyCode === 13) {
+										window.location = action + '/searchkeywords/' + $(_this).val();
+								}
+								return false;
+						};
+				}else{
+						window.location = action + '/searchkeywords/' + $(_this).val();
+				}
+				return false;
+		}
+
+		//        var parent = $('.autocomplete');
+		//
+		//        if(parent.css('display') == 'block'){
+		//            $('.all_search').removeClass('uk-hidden');
+		//        }else{
+		//            $('.all_search').addClass('uk-hidden');
+		//        }
+		function searchInit(_this) {
+				var a = $('#idsearchkeywords').autocomplete({
+						serviceUrl: '/ajaxsearch',
+						urlAll: '/search/searchkeywords',
+						minChars: 2,
+						maxHeight: 400,
+						debug: false,
+						zIndex: 9999,
+						deferRequestBy: 500,
+						noCache: false,
+						fnFormatResult: function (value, data, currentValue) {
+								return value;
+						},
+						onSelect: function (value, data) {
+								var url = $(value).data('url');
+								if(url){
+										location.replace(url);
+								}
+						},
+						isMinCharsFunction : function (input,_this) {
+								$('#idsearchkeywords').addClass('showMessageFromMinChars');
+								$('.all_search').addClass('uk-hidden');
+						},
+						successResponse : function (res,_this) {
+								$('.js_search_form').removeClass('loader');
+								$('.all_search').removeClass('uk-hidden');
+						},
+						beforeReqvest : function (input,_this) {
+								$('#idsearchkeywords').removeClass('showMessageFromMinChars');
+								$('.js_search_form').addClass('loader');
+						}
+				});
+
+		}
+</script>
+	<main class="checkout">
+		<div class="checkout_stripe">
+			<div class="container">
+				
+			</div>
+		</div>
+		<div class="container">
+			<div class="checkout_container">
+				<div class="checkout__row">
+					<div class="checkout__column">
+						<div class="checkout__column">
+							<div class="checkout__selectbox">
+								<label class="checkout__select_label">Sposób dostawy</label>
+								<select class="js_filter_select checkout__select">
+									<option>1</option>
+									<option>2</option>
+									<option>3</option>
+								</select>
+							</div>
+						</div>
+						<div class="checkout__column">
+							<div class="checkout__selectbox">
+								<label class="checkout__select_label_bold">Sposób dostawy</label>
+								<select class="js_filter_select checkout__select">
+									<option>1</option>
+									<option>2</option>
+									<option>3</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="checkout__column"></div>
+				</div>
+				<div class="checkout__row">
+					<div class="checkout__column">
+						<div class="checkout__inputbox">
+							<label>Imię</label>
+							<input type="text" value="Username">
+						</div>
+					</div>
+					<div class="checkout__column"></div>
+				</div>
+				<div class="checkout__row">
+					<div class="checkout__column">
+						<div class="checkout__inputbox">
+							<label>Imię</label>
+							<input type="text" value="Username" class="error">
+						</div>
+					</div>
+					<div class="checkout__column"></div>
+				</div>
+				<div class="checkout__checkbox_row">
+					<input type="checkbox" class="checkout__checkbox" id="dsadsa">
+					<label for="dsadsa" class="checkout__checkbox_label">Inny adres na faktura</label>
+				</div>
+				<div class="checkout__row">
+					<div class="checkout__column">
+						<div class="checkout__textareabox">
+							<a href="#" class="checkout__toggle_textarea js_toggle_textarea">Treść wiadomości</a>
+							<textarea></textarea>
+						</div>
+					</div>
+					<div class="checkout__column">
+						<div class="checkout__total_price_block">
+							<span class="checkout__blue_text">Razem:</span>
+							<span class="checkout__total_price">899 zł</span>
+						</div>
+						<div class="checkout__grand_total_price_block">
+							<span class="checkout__blue_text">Do zapłaty:</span>
+							<span class="checkout__grand_total_price">899,00 zł</span>
+						</div>
+						<div class="checkout__info_block">
+							<div class="checkout__info primary">Zamówienie opłacone z góry — dostawa tańsza!</div>
+						</div>
+						<div class="checkout__info_block">
+							<div class="main_info_block">
+								<div class="main_info primary">Zamówienie opłacone z góry — dostawa tańsza!</div>
+							</div>
+						</div>
+						<div class="checkout__info_block">
+							<div class="main_info_block">
+								<div class="main_info success">Zamówienie opłacone z góry — dostawa tańsza!</div>
+							</div>
+						</div>
+						<div class="checkout__info_block">
+							<div class="main_info_block">
+								<div class="main_info warning">Zamówienie opłacone z góry — dostawa tańsza!</div>
+							</div>
+						</div>
+						<div class="checkout__info_block">
+							<div class="main_info_block">
+								<div class="main_info danger">Zamówienie opłacone z góry — dostawa tańsza!</div>
+							</div>
+						</div>
+						<div class="checkout__info_block">
+							<div class="checkout__buy_button_block">
+								<a href="#" class="checkout__buy_button">Złóż zamówienie</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+	<footer class="footer">
+	<div class="container">
+		<div class="footer__inner">
+			<div class="footer__main_info">
+				<div class="footer__logo_block footer__main_info_column">
+					<figure class="footer__logo">
+						<a href="/">
+							<img src="img/footer-logo.svg" alt="NewFace">
+						</a>
+					</figure>
+					<a href="#" class="footer__site_map footer__reg_text">Mapa strony internetowej</a>
+					<a href="#" class="footer__regulations footer__reg_text">Regulamin</a>
+				</div>
+				<div class="footer__delivery_block footer__main_info_column">
+					<h4 class="sub_title_white">DOSTAWA I PŁATNOŚCI</h4>
+					<div class="footer__delivery_img">
+						<img src="img/footer-delivery.png" alt="DPD">
+					</div>
+				</div>
+				<div class="footer__guaranty_block footer__main_info_column">
+					<h4 class="sub_title_white">GWARANCJA</h4>
+					<p class="footer__guaranty footer__reg_text">12, 18, 24 miesięcy gwarancji na wszystkie urządzenia w zależności od artykułu</p>
+				</div>
+				<div class="footer__payment_block footer__main_info_column">
+					<h4 class="sub_title_white">OPŁATA</h4>
+					<div class="footer__payment_block__inner">
+						<span class="footer__payment_item visa"><img src="img/footer-visa.png" alt="Visa"></span>
+						<span class="footer__payment_item mastercart"><img src="img/footer-mastercard.png" alt="MasterCard"></span>
+						<span class="footer__payment_item_img"><img src="img/footer-payment-polaka.png" alt="Przelew bankowy"></span>
+					</div>
+				</div>
+				<div class="footer__social_links_block footer__main_info_column">
+					<h4 class="sub_title_white">NEWFACE W SIECIACH SPOŁECZNOŚCIOWYCH</h4>
+					<div class="footer__social_links_block__inner">
+						<a href="#" class="footer__facebook footer__social_links"></a>
+						<a href="#" class="footer__google_plus footer__social_links"></a>
+						<a href="#" class="footer__youtube footer__social_links"></a>
+					</div>
+				</div>
+				<div class="footer__worktime_block footer__main_info_column">
+					<h4 class="sub_title_white">ZAPRASZAMY W GODZINACH</h4>
+					<div class="footer__work_schedule">
+						<p class="footer__reg_text">poń – czwartek 8.oo – 18.oo</p>
+						<p class="footer__reg_text">piątek 8.oo – 16.oo</p>
+						<p class="footer__reg_text">sobota nieczynne</p>
+					</div>
+				</div>
+			</div>
+			<p class="footer__client_agreement footer__reg_text">
+				Dostarczamy we wszystkich miastach Polski:  Warszawa Kraków, Łódź, Wrocław, Poznań, Gdańsk, ...
+				<a href="#">[ Pokaż wszystko ]</a>
+			</p>
+		</div>
+	</div>
+
+	<div class="footer__underline">
+		<div class="container">
+			<p>NEWFACE GROUP SP. Z O.O. WARZSAWA INFOLINIA: (22) 102 19 45</p>
+		</div>
+	</div>
+
+</footer>
+	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js/jquery-migrate-1.4.1.min.js" ></script>
+
+<script type="text/javascript" src="js/components/jquery.fancybox.js" ></script>
+<script type="text/javascript" src="js/components/jquery.inputmask.js" ></script>
+<script type="text/javascript" src="js/components/jquery.formstyler.js" ></script>
+<script type="text/javascript" src="js/components/slick.js" ></script>
+<script type="text/javascript" src="js/components/jquery.mCustomScrollbar.js" ></script>
+
+<script type="text/javascript" src="js/sliders.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+</body>
+</html>

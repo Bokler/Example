@@ -1,0 +1,17 @@
+@keyframes wide {
+	0% {
+		height: 200px;
+	}
+	100% {
+		height: 100%;
+	}
+}
+
+@keyframes compressed {
+	0% {
+		height: 100%;
+	}
+	100% {
+		height: 200px;
+	}
+}

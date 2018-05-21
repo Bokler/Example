@@ -1,0 +1,77 @@
+<div class="filter_block">
+	<div class="filter_block__item_selected media js_filters_toggler">
+		<span class="filter_block__title">Sortuj wg</span>
+		<a href="#" class="filter_block__reset_all js_filter_after">Wyczyść filtr</a>
+		<div class="filter_block__list_selected js_filter_after">
+			<a href="#" class="filter_block__link_selected">AC (11)</a>
+			<a href="#" class="filter_block__link_selected">Spray (6)</a>
+		</div>
+	</div>
+	<div class="filter_block__item js_filter">
+		<span class="filter_block__title">PRODUCENT</span>
+		<div class="filter_block__list">
+			<a href="#" class="filter_block__link">AC (11)</a>
+			<a href="#" class="filter_block__link">BS (6)</a>
+			<a href="#" class="filter_block__link">Co (3)</a>
+			<a href="#" class="filter_block__link is_active">NewFace (6)</a>
+			<a href="#" class="filter_block__link hidden">AC (11)</a>
+			<a href="#" class="filter_block__link hidden">BS (6)</a>
+			<a href="#" class="filter_block__link hidden">Co (3)</a>
+			<a href="#" class="filter_block__expand js_filter_block__expand">Show All</a>
+		</div>
+	</div>
+	<div class="filter_block__item js_filter">
+		<span class="filter_block__title">DODATKOWE FUNKCJE</span>
+		<div class="filter_block__list">
+			<a href="#" class="filter_block__link">Krioterapia (1)</a>
+			<a href="#" class="filter_block__link">Spray (6)</a>
+		</div>
+	</div>
+	<div class="filter_block__item js_filter">
+		<span class="filter_block__title">CENA</span>
+		<div class="filter_block__slider_range">
+			<div class="js_slider_range"></div>
+		</div>
+		<div class="filter_block__row">
+			<label>Od</label>
+			<input type="number" class="form-control js_from" value="0" min="1" max="1000">
+			<span class="dash">—</span>
+			<label>do</label>
+			<input type="number" class="form-control js_where" value="1000" min="1" max="1000">
+		</div>
+		<a href="#" class="filter_block__apply">odnaleźć</a>
+	</div>
+</div>
+
+<script>
+	$(document).ready(function () {
+		initRange($('.js_slider_range'));
+		function initRange(_this){
+			var block=$(_this).closest('.js_filter');
+			var min= block.find(".js_from").attr('min');
+			var max= block.find(".js_from").attr('max');
+			var range= block.find(".js_from").attr('data-range');
+			var minVal=block.find(".js_from").val();
+			var maxVal=block.find(".js_where").val();
+		$(_this).slider({
+			range:range?range:1,
+			min: parseInt(min),
+			max: parseInt(max),
+			values: [minVal, maxVal],
+			slide: function(s, i) {
+					block.find(".js_from").val(i.values[0]),
+					block.find(".js_where").val(i.values[1])
+					var link=block.find('.js_link_range_filter');
+					var mask=link.attr('data-mask');
+					var alias=link.attr('data-alias');
+					const regex = ''+alias+'=({from})-({to})';
+					var reg=new RegExp(regex);
+					var newUrl =mask.replace(reg,function () {
+						 return alias+'='+i.values[0]+'-'+i.values[1];
+					});
+						link.attr('href',newUrl);
+					}
+			})
+		};
+	});
+</script>

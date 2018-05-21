@@ -1,0 +1,224 @@
+.checkout {
+	&_stripe {
+		height: 100px;
+		background: rgb(208,230,255);
+		background: linear-gradient(to right, rgba(208,230,255,1) 0%,rgba(247,251,255,1) 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d0e6ff', endColorstr='#f7fbff',GradientType=1 );
+		border-top: 1px solid #cfe5ff;
+		border-bottom: 1px solid #cfe5ff;
+	}
+	&_container {
+		display: flex;
+		flex-direction: column;
+	}
+	&__column {
+		width: 100%;
+		padding-right: 20px;
+		&:last-of-type {
+			padding-right: 0;
+		}
+	}
+	&__row {
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+	}
+	&__selectbox {
+		margin-top: 25px;
+		width: 100%;
+	}
+	&__inputbox {
+		width: 100%;
+		label {
+			display: block;
+			margin-top: 25px;
+			font-size: 16px;
+			color: #769bc5;
+			span {
+				font-size: 13px;
+				color: $base-color;
+			}
+		}
+		input {
+			display: block;
+			width: 100%;
+			margin-top: 10px;
+			font-size: 18px;
+			color: $base-color;
+			padding: 10px;
+			border: 1px solid #a8aeb7;
+		}
+	}
+	&__select {
+		margin-top: 10px;
+		border: 2px solid #a8aeb7;
+		padding: 0;
+		&_label {
+			font-weight: 400;
+			font-size: 16px;
+			color: #769bc5;
+			&_bold {
+				font-weight: 700;
+				font-size: 16px;
+				color: #769bc5;
+			}
+		}
+		&.tiny_border {
+			border-width: 1px;
+			.jq-selectbox__select {
+				padding: 13px 10px;
+				font-size: 18px;
+			}
+		}
+		.jq-selectbox__select {
+			padding: 10px;
+		}
+		.jq-selectbox__dropdown {
+			left: -2px;
+			width: calc(100% + 4px);
+			border: 2px solid #a8aeb7;
+		}
+		.jq-selectbox__select-text {
+			font-size: 16px;
+			font-weight: 500;
+			color: $base-color;
+		}
+		.jq-selectbox__trigger-arrow:before {
+			color: $base-color;
+		}
+		li {
+			font-size: 16px;
+			font-weight: 500;
+			padding: 10px;
+			color: $base-color;
+			&:hover {
+				background-color: lighten($base-color, 50%);
+			}
+			&.selected {
+				background-color: lighten($base-color, 30%);
+			}
+		}
+	}
+	&__checkbox {
+		position: absolute;
+		&:checked + label {
+			&:after {
+				position: absolute;
+				content: '';
+				top: 5px;
+				left: 5px;
+				width: 6px;
+				height: 6px;
+				background-color: #769bc5;
+			}
+		}
+		&_row {
+			margin-top: 20px;
+		}
+		&_label {
+			position: relative;
+			padding-left: 25px;
+			color: #769bc5;
+			text-decoration-style: dashed;
+			text-decoration-line: underline;
+			cursor: pointer;
+			&:before {
+				position: absolute;
+				content: '';
+				top: 0;
+				left: 0;
+				width: 16px;
+				height: 16px;
+				border: 1px solid #769bc5;
+			}
+		}
+	}
+	&__textareabox {
+		width: 100%;
+		textarea {
+			display: none;
+			width: 100%;
+			min-height: 150px;
+			padding: 10px;
+			font-size: 16px;
+			color: $base-color;
+			resize: none;
+			margin-top: 5px;
+		}
+	}
+	&__toggle_textarea {
+		display: block;
+		margin-top: 25px;
+		color: #769bc5;
+		font-size: 16px;
+		&:hover {
+			text-decoration-style: dashed;
+			text-decoration-line: underline;
+		}
+	}
+	&__blue_text {
+		font-weight: 500;
+		font-size: 20px;
+		color: #769bc5;
+		margin-right: 15px;
+	}
+	&__total_price {
+		font-weight: 700;
+		font-size: 20px;
+		color: $base-color;
+		&_block {
+			display: flex;
+			justify-content: flex-end;
+			align-items: flex-end;
+			margin-top: 25px;
+		}
+	}
+	&__grand_total_price {
+		font-weight: 900;
+		font-size: 40px;
+		color: $base-color;
+		line-height: .7;
+		&_block {
+			display: flex;
+			justify-content: flex-end;
+			align-items: flex-end;
+			margin-top: 20px;
+		}
+	}
+	&__info {
+		color: #fff;
+		padding: 5px 15px;
+		background-color: #86a9ee;
+		&_block {
+			display: flex;
+			justify-content: flex-end;
+			margin-top: 15px;
+		}
+	}
+	&__buy_button {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-transform: uppercase;
+		width: 100%;
+		max-width: 450px;
+		height: 60px;
+		color: #fff;
+		background-color: $orange;
+		font-weight: 500;
+		font-size: 18px;
+		transition: .2s all;
+		&:hover {
+			background-color: darken($orange, 10%);
+		}
+		&_block {
+			display: flex;
+			justify-content: flex-end;
+			width: 100%;
+			margin-top: 30px;
+		}
+	}
+	.error {
+		border-color: red;
+	}
+}

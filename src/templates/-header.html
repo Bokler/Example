@@ -1,0 +1,89 @@
+<header class="header_block">
+	<div class="header_block__top_line">
+		<div class="header_block__top_line_container container">
+			<!--#insert file="-header-nav.html" -->
+			<!--#insert file="-header-login-block.html" -->
+		</div>
+	</div>
+	<div class="header_block__main">
+		<div class="header_block__main_container container">
+			<a href="/" class="header_logo_block">
+				<img src="img/header-logo.svg" alt="">
+			</a>
+			<!--#insert file="-main-search-form.html" -->
+			<!--#insert file="-header-callback.html" -->
+			<!--#insert file="-header-add-info.html" -->
+			<!--#insert file="-cart.html" -->
+		</div>
+	</div>
+</header>
+<!--#insert file="-pop-up.html" -->
+<script>
+		function sendSearch() {
+				var input = $('#idsearchkeywords').val();
+				var inputE = $('#idsearchkeywords');
+				if (input != '') {
+						searchWord(inputE,true);
+				}
+				return false;
+		}
+
+		function searchWord(_this,flag) {
+				var form = $(_this).closest('form');
+				var action = form.attr('data-action');
+				if(!flag){
+						document.onkeyup = function (e) {
+								e = e || window.event;
+								if (e.keyCode === 13) {
+										window.location = action + '/searchkeywords/' + $(_this).val();
+								}
+								return false;
+						};
+				}else{
+						window.location = action + '/searchkeywords/' + $(_this).val();
+				}
+				return false;
+		}
+
+		//        var parent = $('.autocomplete');
+		//
+		//        if(parent.css('display') == 'block'){
+		//            $('.all_search').removeClass('uk-hidden');
+		//        }else{
+		//            $('.all_search').addClass('uk-hidden');
+		//        }
+		function searchInit(_this) {
+				var a = $('#idsearchkeywords').autocomplete({
+						serviceUrl: '/ajaxsearch',
+						urlAll: '/search/searchkeywords',
+						minChars: 2,
+						maxHeight: 400,
+						debug: false,
+						zIndex: 9999,
+						deferRequestBy: 500,
+						noCache: false,
+						fnFormatResult: function (value, data, currentValue) {
+								return value;
+						},
+						onSelect: function (value, data) {
+								var url = $(value).data('url');
+								if(url){
+										location.replace(url);
+								}
+						},
+						isMinCharsFunction : function (input,_this) {
+								$('#idsearchkeywords').addClass('showMessageFromMinChars');
+								$('.all_search').addClass('uk-hidden');
+						},
+						successResponse : function (res,_this) {
+								$('.js_search_form').removeClass('loader');
+								$('.all_search').removeClass('uk-hidden');
+						},
+						beforeReqvest : function (input,_this) {
+								$('#idsearchkeywords').removeClass('showMessageFromMinChars');
+								$('.js_search_form').addClass('loader');
+						}
+				});
+
+		}
+</script>

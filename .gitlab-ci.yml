@@ -1,0 +1,23 @@
+variables:
+  DOCKER_DRIVER: "overlay"
+  SSH_KL: "/root/.ssh/id_rsa"
+
+stages:
+  - deploy
+
+image: alpine
+
+before_script:
+  - apk update && apk add openssh
+
+git_deploy:
+  #runners accept jobs only with corresponding tags so far
+  tags:
+   - docker
+  stage: deploy
+  script:
+  - mkdir ~/.ssh && echo $SSH_STAGING_PRIV | base64 -d > $SSH_KL && chmod 400 $SSH_KL
+  - echo -e "Host gitlab\nUser git\nHostname $SSH_STAGING_ADDR\nStrictHostKeyChecking no" > ~/.ssh/config
+  - ssh gitlab 'cd /var/web/nf.aiw.systems/demo && git pull gitlab:n.bohaichuk.aiw/newface && chmod 777 ./*'
+  only:
+    - master
